@@ -29,6 +29,9 @@ router.get('/', function(req, res) {
 app.get('/index.html', function(req, res) {
     res.sendfile('index.html', {root: __dirname })
 });
+app.get('/show.html', function(req, res) {
+    res.sendfile('show.html', {root: __dirname })
+});
 
 // on routes that end in /plants
 // ----------------------------------------------------
@@ -90,6 +93,15 @@ router.route('/plants')
           }
           res.json({ message: 'Plant updated!' });
         });
+      });
+    })
+    .delete(function(req,res){
+      Plant.remove({
+        _id: req.params.plant_id
+      }, function(err, bear){
+        if (err)
+          res.send(err);
+        res.json({message: 'Successfully deleted!'});
       });
     });
 
