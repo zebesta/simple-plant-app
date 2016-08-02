@@ -3,8 +3,12 @@ var express    = require('express');        // call express
 var fs = require('fs');
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
+
+//Database and local hosting for it
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://localhost/simple-plant-app/data');
+
+//locally degined schema for mongoose
 var Plant     = require('./app/models/plant');
 
 app.set('view engine', 'jade');
@@ -26,9 +30,11 @@ router.get('/', function(req, res) {
 });
 
 // more routes for our API will happen here
+//HTML to allow users to add plant to the database
 app.get('/index.html', function(req, res) {
     res.sendfile('index.html', {root: __dirname })
 });
+//HTML to show current database values to users
 app.get('/show.html', function(req, res) {
     res.sendfile('show.html', {root: __dirname })
 });
@@ -41,10 +47,10 @@ router.route('/plants')
         var plant = new Plant();      // create a new instance of the Plant model
         plant.name = req.body.name || 'n/a';  // set the plants name (comes from the request)
         plant.color = req.body.color || 'n/a';
-        console.log('Plant being posted and the plants name is: '+plant.name + ' and the color is: '+plant.color);
+        plant.type = req.body.type || 'n/a';
+        console.log('Plant being posted and the plants name is: '+plant.name + ' and the color is: '+plant.color + ' type: '+plant.type);
         // save the plant and check for errors
         plant.save(function(err, plant) {
-          console.log('trying to save plant and error is: '+err)
             if (err) {
               res.send(err);
             }

@@ -5,7 +5,8 @@ var Schema       = mongoose.Schema;
 
 var PlantSchema   = new Schema({
     name: String,
-    color: String
+    color: String,
+    type: String
 });
 
 module.exports = mongoose.model('Plant', PlantSchema);
