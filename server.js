@@ -32,7 +32,8 @@ router.route('/plants')
 
         var plant = new Plant();      // create a new instance of the Plant model
         plant.name = req.body.name;  // set the plants name (comes from the request)
-        console.log('Plant being posted and the plants name is: '+plant.name);
+        plant.color = req.body.color;
+        console.log('Plant being posted and the plants name is: '+plant.name + ' and the color is: '+plant.color);
         // save the plant and check for errors
         plant.save(function(err, plant) {
           console.log('trying to save plant and error is: '+err)
@@ -57,23 +58,26 @@ router.route('/plants')
     });
   router.route('/plants/:plant_id')
     .get(function(req,res){
-      //find plant bastd on id
+      //find plant based on id
       Plant.findById(req.params.plant_id, function(err, plant){
         if(err){
           res.send(err);
         }
-        console.log(plant.name);
+        console.log(plant.name + ' ' + plant.color);
         res.send(plant);
 
       })
     })
     .put(function(req,res){
+      //update plant based on ID and new data in the request
       Plant.findById(req.params.plant_id, function (err, plant){
         if (err) {
           res.send(err);
         }
         console.log('Changing ' + plant.name + ' to ' + req.body.name);
+        console.log('Changing ' + plant.color + ' to ' + req.body.color);
         plant.name = req.body.name;
+        plant.color = req.body.color;
         plant.save(function(err, plant) {
           if (err) {
             res.send(err);
