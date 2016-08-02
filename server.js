@@ -1,11 +1,13 @@
 // call the packages we need
 var express    = require('express');        // call express
+var fs = require('fs');
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://localhost/simple-plant-app/data');
 var Plant     = require('./app/models/plant');
 
+app.set('view engine', 'jade');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -24,6 +26,9 @@ router.get('/', function(req, res) {
 });
 
 // more routes for our API will happen here
+app.get('/index.html', function(req, res) {
+    res.sendfile('index.html', {root: __dirname })
+});
 
 // on routes that end in /plants
 // ----------------------------------------------------
@@ -76,6 +81,7 @@ router.route('/plants')
         }
         console.log('Changing ' + plant.name + ' to ' + req.body.name);
         console.log('Changing ' + plant.color + ' to ' + req.body.color);
+
         plant.name = req.body.name;
         plant.color = req.body.color;
         plant.save(function(err, plant) {
@@ -90,6 +96,7 @@ router.route('/plants')
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);
+
 //Start the server
 app.listen(port);
 console.log('Magic happens on port ' + port);

@@ -1,0 +1,21 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$.ajax({
+  url: '/test',
+  complete: function(data) {
+    console.log(data);
+  }
+});
+</script>
+</head>
+<body>
+<form action="http://localhost:8080/api/plants" method="POST">
+Name: <input type="text" name="name">  <br>
+Color: <input type="text" name="last_name"> <br>
+<input type="submit" value="Submit"> <br>
+</form>
+
+</body>
+</html>
