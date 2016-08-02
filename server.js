@@ -39,8 +39,8 @@ router.route('/plants')
     .post(function(req, res) {
 
         var plant = new Plant();      // create a new instance of the Plant model
-        plant.name = req.body.name;  // set the plants name (comes from the request)
-        plant.color = req.body.color;
+        plant.name = req.body.name || 'n/a';  // set the plants name (comes from the request)
+        plant.color = req.body.color || 'n/a';
         console.log('Plant being posted and the plants name is: '+plant.name + ' and the color is: '+plant.color);
         // save the plant and check for errors
         plant.save(function(err, plant) {
