@@ -55,6 +55,33 @@ router.route('/plants')
       });
 
     });
+  router.route('/plants/:plant_id')
+    .get(function(req,res){
+      //find plant bastd on id
+      Plant.findById(req.params.plant_id, function(err, plant){
+        if(err){
+          res.send(err);
+        }
+        console.log(plant.name);
+        res.send(plant);
+
+      })
+    })
+    .put(function(req,res){
+      Plant.findById(req.params.plant_id, function (err, plant){
+        if (err) {
+          res.send(err);
+        }
+        console.log('Changing ' + plant.name + ' to ' + req.body.name);
+        plant.name = req.body.name;
+        plant.save(function(err, plant) {
+          if (err) {
+            res.send(err);
+          }
+          res.json({ message: 'Plant updated!' });
+        });
+      });
+    });
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
