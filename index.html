@@ -1,6 +1,6 @@
 <html>
 <body>
-<form action="http://localhost:8080/api/plants" method="POST">
+<form action="http://localhost:8080/api/plants" method="POST" onSubmit=window.location='http://google.com'>
 Name: <input type="text" name="name">  <br>
 Color: <input type="text" name="color"> <br>
 Type: <select name="type">
@@ -11,6 +11,7 @@ Type: <select name="type">
 </select><br>
 <input type="submit" value="Submit"> <br>
 </form>
+
 
 <button onclick="window.location='http://localhost:8080/show.html'">View existing plant database</button>
 </body>
