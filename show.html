@@ -8,6 +8,9 @@ h1 {
     color: #996600;
     font-size: 30px;
 }
+h3{
+  color: #996600
+}
 table, th , td  {
     border: 1px solid grey;
     border-collapse: collapse;
@@ -27,6 +30,23 @@ table tr:nth-child(even) {
 <h1>Plants Database!</h1>
 <div id="id01"></div>
 
+<br>
+<br>
+<h3>Add addtional plants: </h3>
+<form id="myForm" action="http://localhost:8080/api/plants" method="POST">
+  Name: <input type="text" name="name"><br>
+  Color: <input type="text" name="color"><br>
+  Type: <select name="type">
+    <option value="herb" selected>Herb</option>
+    <option value="vegetable">Vegetable</option>
+    <option value="fruit">Fruit</option>
+    <option value="flower">Flower</option>
+  </select>
+    <br>
+  <input type="button" onclick="formFunction()" value="Submit form">
+</form>
+
+
 <script>
 console.log('executing show.html script!');
 var xmlhttp = new XMLHttpRequest();
@@ -43,17 +63,24 @@ xmlhttp.send();
 function myFunction(response) {
   console.log(response);
     var arr = JSON.parse(response);
+    var keys = Object.keys(arr[0]);
+    console.log("The keys are "+ keys);
     var i;
     var out = "<table>";
-    out += "<tr><td>" +
-    'ID' +
-    "</td><td>" +
-    'NAME' +
-    "</td><td>" +
-    'COLOR' +
-    "</td><td>" +
-    'TYPE' +
-    "</td></tr>";
+    out += "<tr>";
+    for(i = 0; i< keys.length-1; i++){
+      out+= "<td>" + keys[i] + "</td>";
+    }
+    out += "</tr>";
+    // out += "<tr><td>" +
+    // 'ID' +
+    // "</td><td>" +
+    // 'NAME' +
+    // "</td><td>" +
+    // 'COLOR' +
+    // "</td><td>" +
+    // 'TYPE' +
+    // "</td></tr>";
 
     for(i = 0; i < arr.length; i++) {
         out += "<tr><td>" +
@@ -69,9 +96,14 @@ function myFunction(response) {
     out += "</table>";
     document.getElementById("id01").innerHTML = out;
 }
+
+function formFunction() {
+  console.log("form funcion in being called!!!")
+    var myForm = document.getElementById("myForm")
+    myForm.submit();
+}
+
 </script>
 <br>
-<button onclick="window.location='http://localhost:8080/index.html'">Add more plants to database</button>
-
 </body>
 </html>

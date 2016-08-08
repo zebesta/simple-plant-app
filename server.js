@@ -3,7 +3,7 @@ var express    = require('express');        // call express
 var fs = require('fs');
 const app        = express();                 // define our app using express
 const routes = require('./routes')
-var bodyParser = require('body-parser');
+// var bodyParser = require('body-parser');
 
 //Database and local hosting for it
 // var mongoose   = require('mongoose');
@@ -12,9 +12,9 @@ var bodyParser = require('body-parser');
 // //locally degined schema for mongoose
 // var Plant     = require('./app/models/plant');
 
-app.set('view engine', 'jade');
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// app.set('view engine', 'jade');
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
 
 var port = process.env.PORT || 8080;        //set port
 // var router = express.Router();              // get an instance of the express Router
