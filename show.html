@@ -29,10 +29,11 @@ table tr:nth-child(even) {
 
 <h1>Plants Database!</h1>
 <br>
-<button onclick="updateScriptToShow('herb')">Herbs</button>
-<button onclick="updateScriptToShow('vegetable')">Vegetables</button>
-<button onclick="updateScriptToShow('fruit')">Fruits</button>
-<button onclick="updateScriptToShow('flower')">Flowers</button>
+<button onclick="updateScriptToShow('')">All</button>
+<button onclick="updateScriptToShow('/types/herb')">Herbs</button>
+<button onclick="updateScriptToShow('/types/vegetable')">Vegetables</button>
+<button onclick="updateScriptToShow('/types/fruit')">Fruits</button>
+<button onclick="updateScriptToShow('/types/flower')">Flowers</button>
 <br>
 <br>
 
@@ -110,7 +111,7 @@ function myFunction(response) {
     document.getElementById("id01").innerHTML = out;
 }
 function updateScriptToShow(type){
-  url = "http://localhost:8080/api/plants/types/"+type;
+  url = "http://localhost:8080/api/plants"+type;
   xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange=function() {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
