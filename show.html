@@ -28,9 +28,23 @@ table tr:nth-child(even) {
 <body>
 
 <h1>Plants Database!</h1>
+<br>
+<button onclick="updateScriptToShow('herb')">Herbs</button>
+<button onclick="updateScriptToShow('vegetable')">Vegetables</button>
+<button onclick="updateScriptToShow('fruit')">Fruits</button>
+<button onclick="updateScriptToShow('flower')">Flowers</button>
+<br>
+<br>
+
 <div id="id01"></div>
 
 <br>
+
+<a href="http://localhost:8080/api/plants/types/herb">Herbs!</a>
+<a href="http://localhost:8080/api/plants/types/vegetable">Vegetables!</a>
+<a href="http://localhost:8080/api/plants/types/fruit">Fruits!</a>
+<a href="http://localhost:8080/api/plants/types/flower">Flowers!</a>
+
 <br>
 <h3>Add addtional plants: </h3>
 <form id="myForm" action="http://localhost:8080/api/plants" method="POST">
@@ -65,10 +79,9 @@ function myFunction(response) {
     var arr = JSON.parse(response);
     var keys = Object.keys(arr[0]);
     console.log("The keys are "+ keys);
-    var i;
     var out = "<table>";
     out += "<tr>";
-    for(i = 0; i< keys.length-1; i++){
+    for(var i = 0; i< keys.length-1; i++){
       out+= "<td>" + keys[i] + "</td>";
     }
     out += "</tr>";
@@ -82,7 +95,7 @@ function myFunction(response) {
     // 'TYPE' +
     // "</td></tr>";
 
-    for(i = 0; i < arr.length; i++) {
+    for(var i = 0; i < arr.length; i++) {
         out += "<tr><td>" +
         arr[i]._id +
         "</td><td>" +
@@ -95,6 +108,18 @@ function myFunction(response) {
     }
     out += "</table>";
     document.getElementById("id01").innerHTML = out;
+}
+function updateScriptToShow(type){
+  url = "http://localhost:8080/api/plants/types/"+type;
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function() {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          myFunction(xmlhttp.responseText);
+      }
+  }
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+
 }
 
 function formFunction() {
