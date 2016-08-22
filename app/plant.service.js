@@ -10,16 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var mock_plants_1 = require('./mock-plants');
-// import 'rxjs/add/operator/toPromise';
+require('rxjs/add/operator/toPromise');
 var PlantService = (function () {
     function PlantService() {
     }
     // constructor (private http: Http){};
     //
-    // private plantsUrl = 'http://localhost:8080/api/plants'
+    // private plantsUrl = 'app/plants'
     // private handleError(error: any): Promise<any> {
     //   console.error('An error occurred', error);
     //   return Promise.reject(error.message || error);
+    // }
+    //
+    // getPlants(){
+    //   this.http.get(this.plantsUrl)
+    //     .toPromise()
+    //     .then(response => response.json().data as Plant[])
+    //     .catch(this.handleError);
     // }
     PlantService.prototype.getPlants = function () {
         return Promise.resolve(mock_plants_1.PLANTS);

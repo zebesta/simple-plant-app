@@ -12,6 +12,7 @@ export class PlantsComponent implements OnInit {
   plants: Plant[];
   selectedPlant: Plant;
   error: any;
+  addingPlant: boolean;
 
   constructor(
     private plantService: PlantService
@@ -26,6 +27,9 @@ export class PlantsComponent implements OnInit {
   }
   ngOnInit() {
     this.getPlants();
+  }
+  goToDetail() {
+    console.log("Trying to go to detail?!? " + this.selectedPlant.name);
   }
 
 }

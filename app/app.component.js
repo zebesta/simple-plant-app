@@ -9,10 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+require('./rxjs-extensions');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'Simple Plant App!!!';
-        this.plant = { "_id": "57a8ac953200c113b0000002", "type": "vegetable", "color": "Orange", "name": "Carrot", "__v": 0 };
     }
     AppComponent = __decorate([
         core_1.Component({

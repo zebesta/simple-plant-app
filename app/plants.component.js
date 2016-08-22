@@ -24,6 +24,9 @@ var PlantsComponent = (function () {
     PlantsComponent.prototype.ngOnInit = function () {
         this.getPlants();
     };
+    PlantsComponent.prototype.goToDetail = function () {
+        console.log("Trying to go to detail?!? " + this.selectedPlant.name);
+    };
     PlantsComponent = __decorate([
         core_1.Component({
             selector: 'my-plants',
