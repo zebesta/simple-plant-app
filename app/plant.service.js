@@ -9,27 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-require('rxjs/add/operator/toPromise');
+var mock_plants_1 = require('./mock-plants');
+// import 'rxjs/add/operator/toPromise';
 var PlantService = (function () {
-    function PlantService(http) {
-        this.http = http;
-        this.plantsUrl = '';
+    function PlantService() {
     }
-    ;
-    PlantService.prototype.handleError = function (error) {
-        console.error('An error occurred', error);
-        return Promise.reject(error.message || error);
-    };
+    // constructor (private http: Http){};
+    //
+    // private plantsUrl = 'http://localhost:8080/api/plants'
+    // private handleError(error: any): Promise<any> {
+    //   console.error('An error occurred', error);
+    //   return Promise.reject(error.message || error);
+    // }
     PlantService.prototype.getPlants = function () {
-        return this.http.get(this.plantsUrl)
-            .toPromise()
-            .then(function (response) { return response.json().data; })
-            .catch(this.handleError);
+        return Promise.resolve(mock_plants_1.PLANTS);
     };
     PlantService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [])
     ], PlantService);
     return PlantService;
 }());

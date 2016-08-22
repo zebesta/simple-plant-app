@@ -4,21 +4,9 @@ import { PlantsComponent } from './plants.component'
 
 @Component({
   selector: 'my-app',
-  template: `
-    <h1>{{title}}</h1>
-    <h2>{{plant.name}} details!</h2>
-    <div><label>id: </label>{{plant.id}}</div>
-    <div>
-      <label>name: </label>
-      <input [(ngModel)]="plant.name" placeholder="name">
-    </div>
-    <my-plants></my-plants>
-    `
+  templateUrl: 'app/app.component.html',
 })
 export class AppComponent {
   title = 'Simple Plant App!!!';
-  plant: Plant = {
-    id: 1,
-    name: 'BASIL'
-  };
+  plant: Plant = {"_id":"57a8ac953200c113b0000002","type":"vegetable","color":"Orange","name":"Carrot","__v":0};
 }

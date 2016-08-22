@@ -13,6 +13,7 @@ var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var app_component_1 = require('./app.component');
 var plants_component_1 = require('./plants.component');
+var plant_service_1 = require('./plant.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -25,6 +26,9 @@ var AppModule = (function () {
             declarations: [
                 app_component_1.AppComponent,
                 plants_component_1.PlantsComponent
+            ],
+            providers: [
+                plant_service_1.PlantService,
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

@@ -9,19 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var plant_service_1 = require('./plant.service');
 var PlantsComponent = (function () {
-    function PlantsComponent() {
-        this.plants = PLANTS;
+    function PlantsComponent(plantService) {
+        this.plantService = plantService;
     }
     PlantsComponent.prototype.onSelect = function (plant) {
         this.selectedPlant = plant;
     };
+    PlantsComponent.prototype.getPlants = function () {
+        var _this = this;
+        this.plantService.getPlants().then(function (plants) { return _this.plants = plants; });
+    };
+    PlantsComponent.prototype.ngOnInit = function () {
+        this.getPlants();
+    };
     PlantsComponent = __decorate([
         core_1.Component({
             selector: 'my-plants',
-            templateUrl: 'app/plants.component.html'
+            templateUrl: 'app/plants.component.html',
+            styleUrls: ['app/plants.component.css'],
+            providers: [plant_service_1.PlantService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [plant_service_1.PlantService])
     ], PlantsComponent);
     return PlantsComponent;
 }());

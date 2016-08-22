@@ -1,19 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Plant } from './plant';
+import { PlantService } from './plant.service';
 
 @Component({
   selector: 'my-plants',
-  templateUrl: 'app/plants.component.html'
+  templateUrl: 'app/plants.component.html',
+  styleUrls: ['app/plants.component.css'],
+  providers: [PlantService]
 })
-export class PlantsComponent {
+export class PlantsComponent implements OnInit {
   plants: Plant[];
   selectedPlant: Plant;
   error: any;
-  plants = PLANTS;
+
+  constructor(
+    private plantService: PlantService
+  ){}
 
 
   onSelect(plant: Plant){
     this.selectedPlant = plant;
+  }
+  getPlants() {
+    this.plantService.getPlants().then(plants => this.plants = plants);
+  }
+  ngOnInit() {
+    this.getPlants();
   }
 
 }
