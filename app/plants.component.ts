@@ -28,6 +28,17 @@ export class PlantsComponent implements OnInit {
         plants => this.plants = plants,
         error => this.errorMessage = <any>error);
   }
+  addPlant():void{
+    this.addingPlant = true;
+    this.selectedPlant = null;
+  }
+  //addPlant (name: string, type: string, color: string) {
+    // if (!name) { return; }
+    // this.plantService.addPlant(name, type, color)
+    //                  .then(
+    //                    plant  => this.plants.push(plant),
+    //                    error =>  this.errorMessage = <any>error);
+  //}
   ngOnInit() {
     this.getPlants();
   }

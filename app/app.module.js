@@ -19,6 +19,7 @@ var in_memory_data_service_1 = require('./in-memory-data.service');
 var app_component_1 = require('./app.component');
 var plants_component_1 = require('./plants.component');
 var plant_service_1 = require('./plant.service');
+var plant_detail_component_1 = require('./plant-detail.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -31,7 +32,8 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                plants_component_1.PlantsComponent
+                plants_component_1.PlantsComponent,
+                plant_detail_component_1.PlantDetailComponent
             ],
             providers: [
                 plant_service_1.PlantService,

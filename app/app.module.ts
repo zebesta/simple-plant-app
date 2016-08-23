@@ -12,6 +12,7 @@ import { InMemoryDataService }               from './in-memory-data.service';
 import { AppComponent }  from './app.component';
 import { PlantsComponent } from './plants.component';
 import { PlantService } from './plant.service';
+import { PlantDetailComponent } from './plant-detail.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { PlantService } from './plant.service';
   ],
   declarations: [
     AppComponent,
-    PlantsComponent
+    PlantsComponent,
+    PlantDetailComponent
   ],
   providers: [
     PlantService,

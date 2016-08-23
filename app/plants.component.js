@@ -22,6 +22,17 @@ var PlantsComponent = (function () {
         this.plantService.getPlants()
             .then(function (plants) { return _this.plants = plants; }, function (error) { return _this.errorMessage = error; });
     };
+    PlantsComponent.prototype.addPlant = function () {
+        this.addingPlant = true;
+        this.selectedPlant = null;
+    };
+    //addPlant (name: string, type: string, color: string) {
+    // if (!name) { return; }
+    // this.plantService.addPlant(name, type, color)
+    //                  .then(
+    //                    plant  => this.plants.push(plant),
+    //                    error =>  this.errorMessage = <any>error);
+    //}
     PlantsComponent.prototype.ngOnInit = function () {
         this.getPlants();
     };

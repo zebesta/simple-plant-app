@@ -1,0 +1,11 @@
+Plant details component!!!!!
+<div *ngIf="plant">
+  <h2>{{plant.name}} details!</h2>
+  <div><label>id: </label>{{plant._id}}</div>
+  <div>
+  <label>name: </label>
+  <input [(ngModel)]="plant.name" placeholder="name">
+  </div>
+  <button (click)="save()">Save</button>
+  <button (click)="goBack()">Back</button>
+  </div>

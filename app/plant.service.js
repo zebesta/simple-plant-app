@@ -17,12 +17,6 @@ var PlantService = (function () {
         this.plantsUrl = 'http://localhost:8080/api/plants';
     }
     ;
-    PlantService.prototype.getPlants = function () {
-        return this.http.get(this.plantsUrl)
-            .toPromise()
-            .then(this.extractData)
-            .catch(this.handleError);
-    };
     PlantService.prototype.extractData = function (res) {
         var body = res.json();
         return body.data || {};
@@ -34,6 +28,21 @@ var PlantService = (function () {
             error.status ? error.status + " - " + error.statusText : 'Server error';
         console.error(errMsg); // log to console instead
         return Promise.reject(errMsg);
+    };
+    PlantService.prototype.getPlants = function () {
+        return this.http.get(this.plantsUrl)
+            .toPromise()
+            .then(this.extractData)
+            .catch(this.handleError);
+    };
+    PlantService.prototype.addPlant = function (name, type, color) {
+        var body = JSON.stringify({ name: name, type: type, color: color });
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post(this.plantsUrl, body, options)
+            .toPromise()
+            .then(this.extractData)
+            .catch(this.handleError);
     };
     PlantService = __decorate([
         core_1.Injectable(), 

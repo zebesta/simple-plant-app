@@ -10,10 +10,16 @@
 </ul>
 <div class="error" *ngIf="error">{{error}}</div>
 <button (click)="addPlant()">Add New Plant</button>
+<br>
+<!-- <my-plant-detail></my-plant-detail>
+<br> -->
 
 <div *ngIf="addingPlant">
   <my-plant-detail (close)="close($event)"></my-plant-detail>
+  <!-- <my-plant-detail></my-plant-detail> -->
+
 </div>
+<br>
 
 <div *ngIf="selectedPlant">
   <h2>
