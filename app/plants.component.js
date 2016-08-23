@@ -19,10 +19,14 @@ var PlantsComponent = (function () {
     };
     PlantsComponent.prototype.getPlants = function () {
         var _this = this;
-        this.plantService.getPlants().then(function (plants) { return _this.plants = plants; });
+        this.plantService.getPlants()
+            .then(function (plants) { return _this.plants = plants; }, function (error) { return _this.errorMessage = error; });
     };
     PlantsComponent.prototype.ngOnInit = function () {
         this.getPlants();
+    };
+    PlantsComponent.prototype.goToDetail = function () {
+        console.log("Trying to go to detail?!? " + this.selectedPlant.name);
     };
     PlantsComponent = __decorate([
         core_1.Component({
