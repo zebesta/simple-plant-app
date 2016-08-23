@@ -4,18 +4,20 @@
 <li *ngFor="let plant of plants"
   [class.selected]="plant === selectedPlant"
   (click)="onSelect(plant)">
-  <span class="badge">{{plant.type}}</span> {{plant.name}} {{ plant.color }}
+  <span class="badge">{{plant.type}}</span> Name: {{plant.name}}
+  Color: {{ plant.color }}
 </li>
 </ul>
 <div class="error" *ngIf="error">{{error}}</div>
-<!-- <button (click)="addHero()">Add New Hero</button> -->
-<!-- <div *ngIf="addingHero">
-  <my-hero-detail (close)="close($event)"></my-hero-detail>
-</div> -->
+<button (click)="addPlant()">Add New Plant</button>
 
-<!-- <div *ngIf="selectedHero">
+<div *ngIf="addingPlant">
+  <my-plant-detail (close)="close($event)"></my-plant-detail>
+</div>
+
+<div *ngIf="selectedPlant">
   <h2>
-    {{selectedHero.name | uppercase}} is my hero
+    {{selectedPlant.name | uppercase}} is my plant
   </h2>
   <button (click)="goToDetail()">View Details</button>
-</div> -->
+</div>
