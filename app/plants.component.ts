@@ -11,7 +11,7 @@ import { PlantService } from './plant.service';
 export class PlantsComponent implements OnInit {
   plants: Plant[];
   selectedPlant: Plant;
-  error: any;
+  errorMessage: any;
   addingPlant: boolean;
 
   constructor(
@@ -23,7 +23,10 @@ export class PlantsComponent implements OnInit {
     this.selectedPlant = plant;
   }
   getPlants() {
-    this.plantService.getPlants().then(plants => this.plants = plants);
+    this.plantService.getPlants()
+      .then(
+        plants => this.plants = plants,
+        error => this.errorMessage = <any>error);
   }
   ngOnInit() {
     this.getPlants();

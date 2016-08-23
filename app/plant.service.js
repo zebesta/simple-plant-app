@@ -9,31 +9,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var mock_plants_1 = require('./mock-plants');
+var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 var PlantService = (function () {
-    function PlantService() {
+    function PlantService(http) {
+        this.http = http;
+        this.plantsUrl = 'http://localhost:8080/api/plants';
     }
-    // constructor (private http: Http){};
-    //
-    // private plantsUrl = 'app/plants'
-    // private handleError(error: any): Promise<any> {
-    //   console.error('An error occurred', error);
-    //   return Promise.reject(error.message || error);
-    // }
-    //
-    // getPlants(){
-    //   this.http.get(this.plantsUrl)
-    //     .toPromise()
-    //     .then(response => response.json().data as Plant[])
-    //     .catch(this.handleError);
-    // }
+    ;
     PlantService.prototype.getPlants = function () {
-        return Promise.resolve(mock_plants_1.PLANTS);
+        return this.http.get(this.plantsUrl)
+            .toPromise()
+            .then(this.extractData)
+            .catch(this.handleError);
+    };
+    PlantService.prototype.extractData = function (res) {
+        var body = res.json();
+        return body.data || {};
+    };
+    PlantService.prototype.handleError = function (error) {
+        // In a real world app, we might use a remote logging infrastructure
+        // We'd also dig deeper into the error to get a better message
+        var errMsg = (error.message) ? error.message :
+            error.status ? error.status + " - " + error.statusText : 'Server error';
+        console.error(errMsg); // log to console instead
+        return Promise.reject(errMsg);
     };
     PlantService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], PlantService);
     return PlantService;
 }());
