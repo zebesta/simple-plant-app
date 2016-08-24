@@ -35,6 +35,10 @@ var PlantService = (function () {
             .then(this.extractData)
             .catch(this.handleError);
     };
+    PlantService.prototype.getPlant = function (_id) {
+        return this.getPlants()
+            .then(function (plants) { return plants.find(function (plant) { return plant._id === _id; }); });
+    };
     PlantService.prototype.addPlant = function (name, type, color) {
         var body = JSON.stringify({ name: name, type: type, color: color });
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });

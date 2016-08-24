@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
+
 import { Plant } from './plant';
 import { PlantService } from './plant.service';
 
@@ -15,7 +17,8 @@ export class PlantsComponent implements OnInit {
   addingPlant: boolean;
 
   constructor(
-    private plantService: PlantService
+    private plantService: PlantService,
+    private router: Router
   ){}
 
 
@@ -42,8 +45,9 @@ export class PlantsComponent implements OnInit {
   ngOnInit() {
     this.getPlants();
   }
-  goToDetail() {
-    console.log("Trying to go to detail?!? " + this.selectedPlant.name);
+  goToDetail(){
+    let link = ['detail', this.selectedPlant._id];
+    this.router.navigate(link);
   }
 
 }

@@ -9,10 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var plant_service_1 = require('./plant.service');
 var PlantsComponent = (function () {
-    function PlantsComponent(plantService) {
+    function PlantsComponent(plantService, router) {
         this.plantService = plantService;
+        this.router = router;
     }
     PlantsComponent.prototype.onSelect = function (plant) {
         this.selectedPlant = plant;
@@ -37,7 +39,8 @@ var PlantsComponent = (function () {
         this.getPlants();
     };
     PlantsComponent.prototype.goToDetail = function () {
-        console.log("Trying to go to detail?!? " + this.selectedPlant.name);
+        var link = ['detail', this.selectedPlant._id];
+        this.router.navigate(link);
     };
     PlantsComponent = __decorate([
         core_1.Component({
@@ -46,7 +49,7 @@ var PlantsComponent = (function () {
             styleUrls: ['app/plants.component.css'],
             providers: [plant_service_1.PlantService]
         }), 
-        __metadata('design:paramtypes', [plant_service_1.PlantService])
+        __metadata('design:paramtypes', [plant_service_1.PlantService, router_1.Router])
     ], PlantsComponent);
     return PlantsComponent;
 }());

@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+
 import { Plant } from './plant'
 import { PlantService } from './plant.service'
 
@@ -10,7 +12,8 @@ import { PlantService } from './plant.service'
 
 export class PlantDetailComponent implements OnInit{
   constructor(
-    private plantService: PlantService
+    private plantService: PlantService,
+    private route: ActivatedRoute
   ){}
   @Input()
   plant: Plant;
@@ -21,18 +24,31 @@ export class PlantDetailComponent implements OnInit{
   navigated = false;
 
   ngOnInit(): void{
-    this.navigated = false;
-    this.plant = new Plant();
-    // this.route.params.forEach((params: Params)=>{
-    //   if(params['_id']!==undefined){
-    //     let id = +params['_id'];
-    //     this.navigated = true;
-    //     this.plantService.getPlant(_id)
-    //       .then(plant => this.plant = plant);
-    //   }else{
-    //     this.navigated = false;
-    //     this.plant = new Plant();
-    //   }
-    // })
+    this.route.params.forEach((params: Params)=>{
+      if(params['_id']!==undefined){
+        let _id = params['_id'];
+        this.navigated = true;
+        this.plantService.getPlant(_id)
+          .then(plant => this.plant = plant);
+      }else{
+        this.navigated = false;
+        this.plant = new Plant();
+      }
+    });
   }
+
+  // save(): void {
+  //   this.plantService
+  //     .save(this.plant)
+  //     .then(plant=>{
+  //       this.plant = plant; //saved hero with ID if new
+  //       this.goBack(plant);
+  //     })
+  //     .catch(error => this.error = error); //TODO display error message here
+  // }
+  //
+  // goBack(savedPlant: Plant = null): void {
+  //   this.close.emit(savedPlant);
+  //   if (this.navigated) { window.history.back(); }
+  // }
 }

@@ -28,6 +28,11 @@ export class PlantService {
               .then(this.extractData)
               .catch(this.handleError);
   }
+  getPlant(_id: string){
+    return this.getPlants()
+      .then(plants => plants.find(plant => plant._id === _id));
+  }
+
   addPlant(name: string, type: string, color: string): Promise<Plant> {
     let body = JSON.stringify({ name, type, color });
     let headers = new Headers({ 'Content-Type': 'application/json' });

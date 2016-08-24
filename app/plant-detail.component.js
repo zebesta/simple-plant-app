@@ -9,28 +9,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var plant_1 = require('./plant');
 var plant_service_1 = require('./plant.service');
 var PlantDetailComponent = (function () {
-    function PlantDetailComponent(plantService) {
+    function PlantDetailComponent(plantService, route) {
         this.plantService = plantService;
+        this.route = route;
         this.close = new core_1.EventEmitter();
         this.navigated = false;
     }
     PlantDetailComponent.prototype.ngOnInit = function () {
-        this.navigated = false;
-        this.plant = new plant_1.Plant();
-        // this.route.params.forEach((params: Params)=>{
-        //   if(params['_id']!==undefined){
-        //     let id = +params['_id'];
-        //     this.navigated = true;
-        //     this.plantService.getPlant(_id)
-        //       .then(plant => this.plant = plant);
-        //   }else{
-        //     this.navigated = false;
-        //     this.plant = new Plant();
-        //   }
-        // })
+        var _this = this;
+        this.route.params.forEach(function (params) {
+            if (params['_id'] !== undefined) {
+                var _id = params['_id'];
+                _this.navigated = true;
+                _this.plantService.getPlant(_id)
+                    .then(function (plant) { return _this.plant = plant; });
+            }
+            else {
+                _this.navigated = false;
+                _this.plant = new plant_1.Plant();
+            }
+        });
     };
     __decorate([
         core_1.Input(), 
@@ -46,7 +48,7 @@ var PlantDetailComponent = (function () {
             templateUrl: 'app/plant-detail.component.html',
             styleUrls: ['app/plant-detail.component.css']
         }), 
-        __metadata('design:paramtypes', [plant_service_1.PlantService])
+        __metadata('design:paramtypes', [plant_service_1.PlantService, router_1.ActivatedRoute])
     ], PlantDetailComponent);
     return PlantDetailComponent;
 }());
