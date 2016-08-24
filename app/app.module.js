@@ -17,9 +17,11 @@ var http_2 = require('@angular/http');
 var angular2_in_memory_web_api_1 = require('angular2-in-memory-web-api');
 var in_memory_data_service_1 = require('./in-memory-data.service');
 var app_component_1 = require('./app.component');
+var app_routing_1 = require('./app.routing');
 var plants_component_1 = require('./plants.component');
 var plant_service_1 = require('./plant.service');
 var plant_detail_component_1 = require('./plant-detail.component');
+var dashboard_component_1 = require('./dashboard.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -28,12 +30,14 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
+                app_routing_1.routing,
                 http_1.HttpModule
             ],
             declarations: [
                 app_component_1.AppComponent,
                 plants_component_1.PlantsComponent,
-                plant_detail_component_1.PlantDetailComponent
+                plant_detail_component_1.PlantDetailComponent,
+                dashboard_component_1.DashboardComponent
             ],
             providers: [
                 plant_service_1.PlantService,
