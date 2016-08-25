@@ -17,7 +17,7 @@ var DashboardComponent = (function () {
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.plantService.getPlants().then(function (plants) { return _this.plants = plants.slice(1, 5); });
+        this.plantService.getPlants().then(function (plants) { return _this.plants = plants; });
     };
     DashboardComponent.prototype.goToDetail = function (plant) {
         var link = ['detail', plant._id];

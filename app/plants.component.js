@@ -22,11 +22,32 @@ var PlantsComponent = (function () {
     PlantsComponent.prototype.getPlants = function () {
         var _this = this;
         this.plantService.getPlants()
-            .then(function (plants) { return _this.plants = plants; }, function (error) { return _this.errorMessage = error; });
+            .then(function (plants) {
+            _this.plants = plants;
+            console.log("In the get plants promise then statement with plants " + JSON.stringify(plants));
+        }, function (error) { return _this.errorMessage = error; });
     };
     PlantsComponent.prototype.addPlant = function () {
         this.addingPlant = true;
         this.selectedPlant = null;
+    };
+    PlantsComponent.prototype.deletePlant = function (plant, event) {
+        var _this = this;
+        console.log("deleting plant " + plant.name + " with id: " + plant._id);
+        event.stopPropagation();
+        this.plantService
+            .delete(plant)
+            .then(function (res) {
+            console.log("In the then statement for the delete plant promise");
+            _this.plants = _this.plants.filter(function (p) { return p !== plant; });
+            if (_this.selectedPlant === plant) {
+                _this.selectedPlant = null;
+            }
+        })
+            .catch(function (error) {
+            console.log("In the catch statement for the delete plant promise");
+            _this.errorMessage = error;
+        });
     };
     //addPlant (name: string, type: string, color: string) {
     // if (!name) { return; }

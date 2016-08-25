@@ -18,8 +18,11 @@ var PlantService = (function () {
     }
     ;
     PlantService.prototype.extractData = function (res) {
+        console.log("Extracting data!");
         var body = res.json();
-        return body.data || {};
+        // console.log(body.data);
+        // return body.data || { };
+        return body;
     };
     PlantService.prototype.handleError = function (error) {
         // In a real world app, we might use a remote logging infrastructure
@@ -46,6 +49,16 @@ var PlantService = (function () {
         return this.http.post(this.plantsUrl, body, options)
             .toPromise()
             .then(this.extractData)
+            .catch(this.handleError);
+    };
+    PlantService.prototype.delete = function (plant) {
+        var headers = new http_1.Headers();
+        headers.append('content-type', 'application/json');
+        var url = this.plantsUrl + "/" + plant._id;
+        console.log("In the plant service and trying to delete " + url);
+        return this.http
+            .delete(url, { headers: headers })
+            .toPromise()
             .catch(this.handleError);
     };
     PlantService = __decorate([

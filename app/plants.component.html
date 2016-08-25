@@ -6,6 +6,7 @@
   (click)="onSelect(plant)">
   <span class="badge">{{plant.type}}</span> Name: {{plant.name}}
   Color: {{ plant.color }}
+  <button class="delete-button" (click)="deletePlant(plant, $event)">Delete</button>
 </li>
 </ul>
 <div class="error" *ngIf="error">{{error}}</div>
@@ -16,7 +17,7 @@
 
 <div *ngIf="addingPlant">
   <my-plant-detail (close)="close($event)"></my-plant-detail>
-  <!-- <my-plant-detail></my-plant-detail> -->
+  <my-plant-detail></my-plant-detail>
 
 </div>
 <br>

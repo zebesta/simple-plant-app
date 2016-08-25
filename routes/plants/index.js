@@ -72,18 +72,23 @@ var findPlantInDatabaseMiddleware = function(req, res, next){
 }
 
 plants.get('/:plant_id', findPlantInDatabaseMiddleware, (req,res,next) => {
-      return res.render('plant_id', request.plant_id);
-    });
+  return res.render('plant_id', request.plant_id);
+});
 
-    plants.delete(('/:plant_id'), (req,res) => {
-          Plant.remove({
-            _id: req.params.plant_id
-          }, (err, plant) => {
-            if (err)
-              res.send(err);
-            res.json({message: 'Successfully deleted!'});
-          });
+plants.delete(('/:plant_id'), (req,res) => {
+  console.log("API!!! Trying to delete plant with id: " + req.params.plant_id);
+      Plant.remove({
+        _id: req.params.plant_id
+      }, (err, plant) => {
+        if (err){
+          console.log("There was an error?!?");
+          res.send(err);
+        }else{
+          console.log("DELETING");
+          res.json({message: 'Successfully deleted!'});
+        }
       });
+  });
 
 
 module.exports = plants;

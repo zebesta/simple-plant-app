@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   plants: Plant[] = [];
 
   ngOnInit(){
-    this.plantService.getPlants().then(plants => this.plants = plants.slice(1,5));
+    this.plantService.getPlants().then(plants => this.plants = plants);
   }
 
   goToDetail(plant: Plant){

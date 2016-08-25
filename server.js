@@ -1,5 +1,7 @@
 // call the packages we need
 var express    = require('express');        // call express
+var cors = require('cors')
+
 var fs = require('fs');
 const app        = express();                 // define our app using express
 const routes = require('./routes')
@@ -13,6 +15,8 @@ var bodyParser = require('body-parser');
 // var Plant     = require('./app/models/plant');
 
 app.set('view engine', 'jade');
+//allow cross origin requests
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 

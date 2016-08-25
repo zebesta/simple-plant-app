@@ -28,12 +28,32 @@ export class PlantsComponent implements OnInit {
   getPlants() {
     this.plantService.getPlants()
       .then(
-        plants => this.plants = plants,
+        plants => {
+          this.plants = plants;
+          console.log("In the get plants promise then statement with plants " +JSON.stringify(plants));
+        },
         error => this.errorMessage = <any>error);
   }
   addPlant():void{
     this.addingPlant = true;
     this.selectedPlant = null;
+  }
+  deletePlant(plant: Plant, event: any){
+    console.log("deleting plant "+ plant.name + " with id: "+plant._id);
+    event.stopPropagation();
+    this.plantService
+      .delete(plant)
+      .then(res=>{
+        console.log("In the then statement for the delete plant promise");
+        this.plants = this.plants.filter(p => p!==plant);
+        if(this.selectedPlant === plant){
+          this.selectedPlant = null;
+        }
+      })
+      .catch(error => {
+        console.log("In the catch statement for the delete plant promise");
+        this.errorMessage = error;
+      });
   }
   //addPlant (name: string, type: string, color: string) {
     // if (!name) { return; }
