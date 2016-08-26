@@ -2,6 +2,7 @@ const plants = require('express').Router();
 
 //database related variables
 var mongoose   = require('mongoose');
+var cors = require('cors');
 mongoose.connect('mongodb://localhost/simple-plant-app/data');
 //locally degined schema for mongoose
 var Plant     = require('../../app/models/plant');
@@ -75,7 +76,7 @@ plants.get('/:plant_id', findPlantInDatabaseMiddleware, (req,res,next) => {
   return res.render('plant_id', request.plant_id);
 });
 
-plants.delete(('/:plant_id'), (req,res) => {
+plants.delete('/:plant_id', cors(), (req,res) => {
   console.log("API!!! Trying to delete plant with id: " + req.params.plant_id);
       Plant.remove({
         _id: req.params.plant_id

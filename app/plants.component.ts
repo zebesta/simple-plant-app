@@ -28,10 +28,7 @@ export class PlantsComponent implements OnInit {
   getPlants() {
     this.plantService.getPlants()
       .then(
-        plants => {
-          this.plants = plants;
-          console.log("In the get plants promise then statement with plants " +JSON.stringify(plants));
-        },
+        plants => this.plants = plants,
         error => this.errorMessage = <any>error);
   }
   addPlant():void{
@@ -44,14 +41,12 @@ export class PlantsComponent implements OnInit {
     this.plantService
       .delete(plant)
       .then(res=>{
-        console.log("In the then statement for the delete plant promise");
         this.plants = this.plants.filter(p => p!==plant);
         if(this.selectedPlant === plant){
           this.selectedPlant = null;
         }
       })
       .catch(error => {
-        console.log("In the catch statement for the delete plant promise");
         this.errorMessage = error;
       });
   }

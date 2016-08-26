@@ -10,13 +10,12 @@ export class PlantService {
 
   private plantsUrl = 'http://localhost:8080/api/plants'
   private extractData(res: Response){
-    console.log("Extracting data!");
     let body = res.json();
-    // console.log(body.data);
     // return body.data || { };
     return body;
   }
   private handleError (error: any) {
+    console.log("Error!!! " + error);
     // In a real world app, we might use a remote logging infrastructure
     // We'd also dig deeper into the error to get a better message
     let errMsg = (error.message) ? error.message :
@@ -47,13 +46,13 @@ export class PlantService {
   }
   delete(plant: Plant): Promise<Response> {
     let headers = new Headers();
-    headers.append('content-type', 'application/json');
+    headers.append('Content-Type', 'application/json');
 
     let url = `${this.plantsUrl}/${plant._id}`;
-    console.log("In the plant service and trying to delete " + url);
-
+    console.log("Trying to delete plant with url: "+ url);
     return this.http
-      .delete(url, {headers: headers})
+      // .delete(url, {headers: headers})
+      .delete(url)
       .toPromise()
       .catch(this.handleError);
   }

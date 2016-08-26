@@ -17,6 +17,7 @@ var bodyParser = require('body-parser');
 app.set('view engine', 'jade');
 //allow cross origin requests
 app.use(cors());
+//app.options('*', cors()); // include before other routes
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 

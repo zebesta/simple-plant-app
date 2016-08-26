@@ -18,13 +18,12 @@ var PlantService = (function () {
     }
     ;
     PlantService.prototype.extractData = function (res) {
-        console.log("Extracting data!");
         var body = res.json();
-        // console.log(body.data);
         // return body.data || { };
         return body;
     };
     PlantService.prototype.handleError = function (error) {
+        console.log("Error!!! " + error);
         // In a real world app, we might use a remote logging infrastructure
         // We'd also dig deeper into the error to get a better message
         var errMsg = (error.message) ? error.message :
@@ -53,11 +52,11 @@ var PlantService = (function () {
     };
     PlantService.prototype.delete = function (plant) {
         var headers = new http_1.Headers();
-        headers.append('content-type', 'application/json');
+        headers.append('Content-Type', 'application/json');
         var url = this.plantsUrl + "/" + plant._id;
-        console.log("In the plant service and trying to delete " + url);
+        console.log("Trying to delete plant with url: " + url);
         return this.http
-            .delete(url, { headers: headers })
+            .delete(url)
             .toPromise()
             .catch(this.handleError);
     };
