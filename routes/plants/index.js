@@ -26,6 +26,7 @@ plants.get('/', (req, res) => {
 
      })
      .post('/', (req, res) => {
+       console.log("Trying to post from API!!");
     var plant = new Plant();      // create a new instance of the Plant model
     console.log(plant);
     console.log(req.body);
@@ -74,7 +75,7 @@ var findPlantInDatabaseMiddleware = function(req, res, next){
 
 plants.get('/:plant_id', findPlantInDatabaseMiddleware, (req,res,next) => {
   return res.render('plant_id', request.plant_id);
-});
+})
 
 plants.delete('/:plant_id', cors(), (req,res) => {
   console.log("API!!! Trying to delete plant with id: " + req.params.plant_id);
@@ -90,6 +91,31 @@ plants.delete('/:plant_id', cors(), (req,res) => {
         }
       });
   });
+  plants.put('/:plant_id', cors(), (req, res) =>{
+    console.log("Trying to put from API!")
+    Plant.findById(req.params.plant_id, (err, plant) => {
+      if(err){
+        res.send(err);
+      }
+      console.log(req.body);
+      plant.name = req.body.plant.name;
+      plant.color = req.body.plant.color;
+      plant.type = req.body.plant.type;
+      plant.save(function(err){
+        if(err){
+          console.log("error in the plant.save function!");
+          res.send(err);
+        }else{
+          console.log("saving the plant from the api successfully!");
+          res.json({message: 'Plant updated!'});
+        }
+      })
+      console.log(plant.name + ' ' + plant.color + ' ' + plant.type);
+      // res.send(plant);
+      // return next(plant);
+    });
+
+  })
 
 
 module.exports = plants;

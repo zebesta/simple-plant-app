@@ -28,6 +28,13 @@ var PlantsComponent = (function () {
         this.addingPlant = true;
         this.selectedPlant = null;
     };
+    PlantsComponent.prototype.close = function (savedPlant) {
+        console.log("Close function from the pants component");
+        this.addingPlant = false;
+        if (savedPlant) {
+            this.getPlants();
+        }
+    };
     PlantsComponent.prototype.deletePlant = function (plant, event) {
         var _this = this;
         console.log("deleting plant " + plant.name + " with id: " + plant._id);

@@ -35,6 +35,11 @@ export class PlantsComponent implements OnInit {
     this.addingPlant = true;
     this.selectedPlant = null;
   }
+  close(savedPlant: Plant): void {
+    console.log("Close function from the pants component");
+    this.addingPlant = false;
+    if (savedPlant) { this.getPlants(); }
+  }
   deletePlant(plant: Plant, event: any){
     console.log("deleting plant "+ plant.name + " with id: "+plant._id);
     event.stopPropagation();

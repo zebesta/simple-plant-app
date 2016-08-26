@@ -60,6 +60,36 @@ var PlantService = (function () {
             .toPromise()
             .catch(this.handleError);
     };
+    PlantService.prototype.save = function (plant) {
+        if (plant._id) {
+            return this.put(plant);
+        }
+        return this.post(plant);
+    };
+    PlantService.prototype.put = function (plant) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        console.log("In the put from service!!!");
+        var url = this.plantsUrl + "/" + plant._id;
+        var body = JSON.stringify({ plant: plant });
+        var options = new http_1.RequestOptions({ headers: headers });
+        console.log(body);
+        return this.http
+            .put(url, body, options)
+            .toPromise()
+            .then(function () { return plant; })
+            .catch(this.handleError);
+    };
+    PlantService.prototype.post = function (plant) {
+        console.log("In the post from service!!!");
+        var headers = new http_1.Headers({
+            'Content-Type': 'application/json' });
+        return this.http
+            .post(this.plantsUrl, JSON.stringify(plant), { headers: headers })
+            .toPromise()
+            .then(function (res) { return res.json().data; })
+            .catch(this.handleError);
+    };
     PlantService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

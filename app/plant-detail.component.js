@@ -34,6 +34,24 @@ var PlantDetailComponent = (function () {
             }
         });
     };
+    PlantDetailComponent.prototype.save = function () {
+        var _this = this;
+        console.log("Trying to save plant " + this.plant.name);
+        this.plantService
+            .save(this.plant)
+            .then(function (plant) {
+            _this.plant = plant; //saved plant with ID if new
+            _this.goBack(plant);
+        })
+            .catch(function (error) { return _this.error = error; }); //TODO display error message here
+    };
+    PlantDetailComponent.prototype.goBack = function (savedPlant) {
+        if (savedPlant === void 0) { savedPlant = null; }
+        this.close.emit(savedPlant);
+        if (this.navigated) {
+            window.history.back();
+        }
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', plant_1.Plant)

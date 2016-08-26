@@ -37,18 +37,19 @@ export class PlantDetailComponent implements OnInit{
     });
   }
 
-  // save(): void {
-  //   this.plantService
-  //     .save(this.plant)
-  //     .then(plant=>{
-  //       this.plant = plant; //saved hero with ID if new
-  //       this.goBack(plant);
-  //     })
-  //     .catch(error => this.error = error); //TODO display error message here
-  // }
-  //
-  // goBack(savedPlant: Plant = null): void {
-  //   this.close.emit(savedPlant);
-  //   if (this.navigated) { window.history.back(); }
-  // }
+  save(): void {
+    console.log("Trying to save plant " + this.plant.name);
+    this.plantService
+      .save(this.plant)
+      .then(plant=>{
+        this.plant = plant; //saved plant with ID if new
+        this.goBack(plant);
+      })
+      .catch(error => this.error = error); //TODO display error message here
+  }
+
+  goBack(savedPlant: Plant = null): void {
+    this.close.emit(savedPlant);
+    if (this.navigated) { window.history.back(); }
+  }
 }

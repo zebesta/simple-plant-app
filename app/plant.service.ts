@@ -56,6 +56,41 @@ export class PlantService {
       .toPromise()
       .catch(this.handleError);
   }
+  save(plant: Plant): Promise<Plant>  {
+    if (plant._id) {
+      return this.put(plant);
+    }
+    return this.post(plant);
+  }
+  private put(plant: Plant): Promise<Plant> {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log("In the put from service!!!");
+
+    let url = `${this.plantsUrl}/${plant._id}`;
+    let body = JSON.stringify({ plant });
+    let options = new RequestOptions({headers: headers});
+    console.log(body);
+
+    return this.http
+               .put(url, body, options)
+               .toPromise()
+               .then(() => plant)
+               .catch(this.handleError);
+  }
+
+  private post(plant: Plant): Promise<Plant> {
+    console.log("In the post from service!!!");
+
+    let headers = new Headers({
+      'Content-Type': 'application/json'});
+
+    return this.http
+               .post(this.plantsUrl, JSON.stringify(plant), {headers: headers})
+               .toPromise()
+               .then(res => res.json().data)
+               .catch(this.handleError);
+  }
 
 
 }
