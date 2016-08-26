@@ -1,7 +1,13 @@
 <h3>Plant dashboard!!!!</h3>
+<input [(ngModel)]="color" />
+<div [ngStyle]="{'color': color}">
+  style using ngStyle
+</div>
+<button class="turn-black" (click)="turnBlack()">Turn Black</button>
+
 <div class="grid grid-pad">
-  <div *ngFor="let plant of plants" (click)="goToDetail(plant)" class="col-1-4">
-    <div class="module plant">
+  <div *ngFor="let plant of plants"  [ngStyle]="{'color': color}" (click)="goToDetail(plant)" class="col-1-4">
+    <div class="module plant {{plant.type}}">
       <h4>{{plant.name}}</h4>
     </div>
   </div>

@@ -4,7 +4,7 @@
 <li *ngFor="let plant of plants"
   [class.selected]="plant === selectedPlant"
   (click)="onSelect(plant)">
-  <span class="badge">{{plant.type}}</span> Name: {{plant.name}}
+  <span class="{{plant.type}}">{{plant.type}}</span> Name: {{plant.name}}
   Color: {{ plant.color }}
   <button class="delete-button" (click)="deletePlant(plant, $event)">Delete</button>
 </li>

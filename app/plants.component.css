@@ -32,12 +32,68 @@ width: 25em;
    position: relative;
    top: -3px;
  }
- .plants .badge {
+ /*.plants .badge {
    display: inline-block;
    font-size: small;
    color: white;
    padding: 0.8em 0.7em 0 0.7em;
-   background-color: #36453B;
+   background-color: #629460;
+   line-height: 1em;
+   position: relative;
+   left: -1px;
+   top: -4px;
+   height: 1.8em;
+   margin-right: .8em;
+   border-radius: 4px 0 0 4px;
+ }*/
+ .plants .fruit {
+   display: inline-block;
+   font-size: small;
+   color: white;
+   padding: 0.8em 0.7em 0 0.7em;
+   background-color: red;
+   line-height: 1em;
+   position: relative;
+   left: -1px;
+   top: -4px;
+   height: 1.8em;
+   margin-right: .8em;
+   border-radius: 4px 0 0 4px;
+ }
+ .plants .vegetable{
+   display: inline-block;
+   font-size: small;
+   color: white;
+   padding: 0.8em 0.7em 0 0.7em;
+   background-color: green;
+   line-height: 1em;
+   position: relative;
+   left: -1px;
+   top: -4px;
+   height: 1.8em;
+   margin-right: .8em;
+   border-radius: 4px 0 0 4px;
+ }
+ .plants .herb{
+   display: inline-block;
+   font-size: small;
+   color: white;
+   padding: 0.8em 0.7em 0 0.7em;
+   background-color: darkolivegreen;
+   line-height: 1em;
+   position: relative;
+   left: -1px;
+   top: -4px;
+   height: 1.8em;
+   margin-right: .8em;
+   border-radius: 4px 0 0 4px;
+ }
+ .plants .flower{
+   display: inline-block;
+   font-size: small;
+   color: white;
+   padding: 0.8em 0.7em 0 0.7em;
+   background-color: violet;
    line-height: 1em;
    position: relative;
    left: -1px;
