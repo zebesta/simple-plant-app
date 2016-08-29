@@ -69,6 +69,10 @@ export class PlantsComponent implements OnInit {
     let link = ['detail', this.selectedPlant._id];
     this.router.navigate(link);
   }
+  goToType(plant: Plant){
+    //Need to either reload a new pahe with this filter or filter the existing results here
+    console.log("Attempting to go to type!" + plant.type);
+  }
 
 }
 

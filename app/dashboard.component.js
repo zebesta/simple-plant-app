@@ -16,14 +16,14 @@ var DashboardComponent = (function () {
         this.plantService = plantService;
         this.router = router;
         this.plants = [];
-        this.color = 'pink';
+        // this.color = 'pink';
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.plantService.getPlants().then(function (plants) { return _this.plants = plants; });
     };
     DashboardComponent.prototype.turnBlack = function () {
-        this.color = 'black';
+        // this.color = 'black';
     };
     DashboardComponent.prototype.goToDetail = function (plant) {
         var link = ['detail', plant._id];

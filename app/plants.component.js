@@ -65,6 +65,10 @@ var PlantsComponent = (function () {
         var link = ['detail', this.selectedPlant._id];
         this.router.navigate(link);
     };
+    PlantsComponent.prototype.goToType = function (plant) {
+        //Need to either reload a new pahe with this filter or filter the existing results here
+        console.log("Attempting to go to type!" + plant.type);
+    };
     PlantsComponent = __decorate([
         core_1.Component({
             selector: 'my-plants',

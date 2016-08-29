@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
     private plantService: PlantService,
     private router: Router
   ){
-    this.color = 'pink';
+    // this.color = 'pink';
   }
 
   plants: Plant[] = [];
@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
     this.plantService.getPlants().then(plants => this.plants = plants);
   }
   turnBlack(){
-    this.color = 'black';
+    // this.color = 'black';
   }
 
   goToDetail(plant: Plant){

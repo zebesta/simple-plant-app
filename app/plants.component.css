@@ -3,6 +3,7 @@
   color: white;
 }
 .plants {
+  text-align: center;
 margin: 0 0 2em 0;
 list-style-type: none;
 padding: 0;
@@ -20,7 +21,7 @@ width: 25em;
  }
  .plants li.selected:hover {
    background-color: #BBD8DC !important;
-  //  background-color: #00FF00 !important;
+   /*background-color: #00FF00 !important;*/
    color: white;
  }
  .plants li:hover {
@@ -47,6 +48,7 @@ width: 25em;
    border-radius: 4px 0 0 4px;
  }*/
  .plants .fruit {
+   float:left;
    display: inline-block;
    font-size: small;
    color: white;
@@ -57,10 +59,12 @@ width: 25em;
    left: -1px;
    top: -4px;
    height: 1.8em;
+   width: 8em;
    margin-right: .8em;
    border-radius: 4px 0 0 4px;
  }
  .plants .vegetable{
+   float:left;
    display: inline-block;
    font-size: small;
    color: white;
@@ -71,10 +75,12 @@ width: 25em;
    left: -1px;
    top: -4px;
    height: 1.8em;
+   width: 8em;
    margin-right: .8em;
    border-radius: 4px 0 0 4px;
  }
  .plants .herb{
+   float:left;
    display: inline-block;
    font-size: small;
    color: white;
@@ -85,10 +91,12 @@ width: 25em;
    left: -1px;
    top: -4px;
    height: 1.8em;
+   width: 8em;
    margin-right: .8em;
    border-radius: 4px 0 0 4px;
  }
  .plants .flower{
+   float:left;
    display: inline-block;
    font-size: small;
    color: white;
@@ -99,6 +107,7 @@ width: 25em;
    left: -1px;
    top: -4px;
    height: 1.8em;
+   width: 8em;
    margin-right: .8em;
    border-radius: 4px 0 0 4px;
  }
