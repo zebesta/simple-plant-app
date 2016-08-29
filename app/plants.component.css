@@ -33,83 +33,35 @@ width: 25em;
    position: relative;
    top: -3px;
  }
- /*.plants .badge {
-   display: inline-block;
-   font-size: small;
-   color: white;
-   padding: 0.8em 0.7em 0 0.7em;
-   background-color: #629460;
-   line-height: 1em;
-   position: relative;
-   left: -1px;
-   top: -4px;
-   height: 1.8em;
-   margin-right: .8em;
-   border-radius: 4px 0 0 4px;
- }*/
- .plants .fruit {
-   float:left;
-   display: inline-block;
-   font-size: small;
-   color: white;
-   padding: 0.8em 0.7em 0 0.7em;
-   background-color: red;
-   line-height: 1em;
-   position: relative;
-   left: -1px;
-   top: -4px;
-   height: 1.8em;
-   width: 8em;
-   margin-right: .8em;
-   border-radius: 4px 0 0 4px;
+
+.plants .badge {
+  float:left;
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: blue;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  width: 8em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+/*Custom badge colors based on the type of object*/
+ .fruit {
+   background-color: red !important;
  }
- .plants .vegetable{
-   float:left;
-   display: inline-block;
-   font-size: small;
-   color: white;
-   padding: 0.8em 0.7em 0 0.7em;
-   background-color: green;
-   line-height: 1em;
-   position: relative;
-   left: -1px;
-   top: -4px;
-   height: 1.8em;
-   width: 8em;
-   margin-right: .8em;
-   border-radius: 4px 0 0 4px;
+ .vegetable{
+   background-color: green !important;
  }
- .plants .herb{
-   float:left;
-   display: inline-block;
-   font-size: small;
-   color: white;
-   padding: 0.8em 0.7em 0 0.7em;
-   background-color: darkolivegreen;
-   line-height: 1em;
-   position: relative;
-   left: -1px;
-   top: -4px;
-   height: 1.8em;
-   width: 8em;
-   margin-right: .8em;
-   border-radius: 4px 0 0 4px;
+ .herb{
+   background-color: darkolivegreen !important;
  }
- .plants .flower{
-   float:left;
-   display: inline-block;
-   font-size: small;
-   color: white;
-   padding: 0.8em 0.7em 0 0.7em;
-   background-color: violet;
-   line-height: 1em;
-   position: relative;
-   left: -1px;
-   top: -4px;
-   height: 1.8em;
-   width: 8em;
-   margin-right: .8em;
-   border-radius: 4px 0 0 4px;
+ .flower{
+   background-color: violet !important;
  }
  .error {color:red;}
 button.delete-button{

@@ -16,6 +16,7 @@ var PlantDetailComponent = (function () {
     function PlantDetailComponent(plantService, route) {
         this.plantService = plantService;
         this.route = route;
+        this.types = ['herb', 'vegetable', 'fruit', 'flower'];
         this.close = new core_1.EventEmitter();
         this.navigated = false;
     }

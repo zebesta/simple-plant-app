@@ -11,6 +11,7 @@ import { PlantService } from './plant.service'
 })
 
 export class PlantDetailComponent implements OnInit{
+  types: String[] = ['herb', 'vegetable', 'fruit','flower'];
   constructor(
     private plantService: PlantService,
     private route: ActivatedRoute
