@@ -1,7 +1,7 @@
 <html>
 <body>
   <h1>Enter Plant Data below to add to database! </h1>
-<form action="mongodb://plants:plants@ds029106.mlab.com:29106/plantsdb" method="POST" >
+<form action="http://localhost:8080/api/plants" method="POST" >
 Name: <input type="text" name="name">  <br>
 Color: <input type="text" name="color"> <br>
 Type: <select name="type">
@@ -14,7 +14,7 @@ Type: <select name="type">
 </form>
 
 
-<form id="myForm" action="mongodb://plants:plants@ds029106.mlab.com:29106/plantsdb" method="POST">
+<form id="myForm" action="http://localhost:8080/api/plants" method="POST">
   Name: <input type="text" name="name"><br>
   Color: <input type="text" name="color"><br>
   Type: <select name="type">

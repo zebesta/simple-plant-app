@@ -2,7 +2,14 @@ const plants = require('express').Router();
 
 //database related variables
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://plants:plants@ds029106.mlab.com:29106/plantsdb');
+// mongoose.connect('mongodb://plants:plants@ds029106.mlab.com:29106/plantsdb');
+
+var uri = 'mongodb://plants:plants@ds029106.mlab.com:29106/plantsdb'
+mongoose.connect(uri, function (error) {
+    if (error) console.error(error);
+    else console.log('mongo connected');
+});
+// mongoose.connect(uri);
 //locally degined schema for mongoose
 var Plant     = require('../../app/models/plant');
 var types = require('./types');
