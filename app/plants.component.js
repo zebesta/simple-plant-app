@@ -29,7 +29,7 @@ var PlantsComponent = (function () {
         this.selectedPlant = null;
     };
     PlantsComponent.prototype.close = function (savedPlant) {
-        console.log("Close function from the pants component");
+        console.log("Close function from the plants component");
         this.addingPlant = false;
         if (savedPlant) {
             this.getPlants();

@@ -1,19 +1,19 @@
 Plant details component!!!!!
-<div *ngIf="plant">
-  <h2>{{plant.name}} details!</h2>
-  <div><label>id: </label>{{plant._id}}</div>
+<div class *ngIf="plant">
+  <h2 class = "plant-details-header">{{plant.name}} details!</h2>
+  <!-- <div><label>id: </label>{{plant._id}}</div> -->
   <div>
-  <label>name: </label>
+  <label class="name-label">Name:</label>
   <input [(ngModel)]="plant.name" placeholder="name">
   </div>
   <div>
-  <label>color: </label>
+  <label class="color-label">Color:</label>
   <input [(ngModel)]="plant.color" placeholder="color">
   </div>
   <div>
   <!-- <label>type: </label>
   <input [(ngModel)]="plant.type" placeholder="type"> -->
-  <label>type:</label>
+  <label class="type-label">Type:</label>
   <select [(ngModel)]="plant.type" placeholder="herb">
             <option value=""></option>
             <option *ngFor="let t of types" [value]="t">{{t}}</option>

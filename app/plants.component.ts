@@ -36,7 +36,7 @@ export class PlantsComponent implements OnInit {
     this.selectedPlant = null;
   }
   close(savedPlant: Plant): void {
-    console.log("Close function from the pants component");
+    console.log("Close function from the plants component");
     this.addingPlant = false;
     if (savedPlant) { this.getPlants(); }
   }

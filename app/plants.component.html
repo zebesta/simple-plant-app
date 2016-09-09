@@ -21,7 +21,7 @@
 
 <div *ngIf="selectedPlant">
   <h2>
-    {{selectedPlant.name | uppercase}} is my plant
+    {{selectedPlant.name}} is a {{selectedPlant.type}}
   </h2>
   <button (click)="goToDetail()">View Details</button>
 </div>
