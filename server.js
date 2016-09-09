@@ -44,6 +44,10 @@ app.get('/index.html', function(req, res) {
 app.get('/show.html', function(req, res) {
     res.sendfile('show.html', {root: __dirname })
 });
+//default to show.html
+app.get('/', function(req, res) {
+    res.sendfile('show.html', {root: __dirname })
+});
 
 
 app.use('/api', routes);
