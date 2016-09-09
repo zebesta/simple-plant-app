@@ -2,15 +2,8 @@ const plants = require('express').Router();
 
 //database related variables
 var mongoose   = require('mongoose');
-// mongoose.connect('mongodb://plants:plants@ds029106.mlab.com:29106/plantsdb');
-
-//******** USING ACTUAL MONGO DB ONLINE!
-var uri = 'mongodb://plants:plants@ds029106.mlab.com:29106/plantsdb'
-mongoose.connect(uri, function (error) {
-    if (error) console.error(error);
-    else console.log('mongo connected');
-});
-// mongoose.connect(uri);
+var cors = require('cors');
+mongoose.connect('mongodb://plants:plants@ds029106.mlab.com:29106/plantsdb');
 //locally degined schema for mongoose
 var Plant     = require('../../app/models/plant');
 var types = require('./types');
@@ -33,6 +26,7 @@ plants.get('/', (req, res) => {
 
      })
      .post('/', (req, res) => {
+       console.log("Trying to post from API!!");
     var plant = new Plant();      // create a new instance of the Plant model
     console.log(plant);
     console.log(req.body);
@@ -80,18 +74,48 @@ var findPlantInDatabaseMiddleware = function(req, res, next){
 }
 
 plants.get('/:plant_id', findPlantInDatabaseMiddleware, (req,res,next) => {
-      return res.render('plant_id', request.plant_id);
+  return res.render('plant_id', request.plant_id);
+})
+
+plants.delete('/:plant_id', cors(), (req,res) => {
+  console.log("API!!! Trying to delete plant with id: " + req.params.plant_id);
+      Plant.remove({
+        _id: req.params.plant_id
+      }, (err, plant) => {
+        if (err){
+          console.log("There was an error?!?");
+          res.send(err);
+        }else{
+          console.log("DELETING");
+          res.json({message: 'Successfully deleted!'});
+        }
+      });
+  });
+  plants.put('/:plant_id', cors(), (req, res) =>{
+    console.log("Trying to put from API!")
+    Plant.findById(req.params.plant_id, (err, plant) => {
+      if(err){
+        res.send(err);
+      }
+      console.log(req.body);
+      plant.name = req.body.plant.name;
+      plant.color = req.body.plant.color;
+      plant.type = req.body.plant.type;
+      plant.save(function(err){
+        if(err){
+          console.log("error in the plant.save function!");
+          res.send(err);
+        }else{
+          console.log("saving the plant from the api successfully!");
+          res.json({message: 'Plant updated!'});
+        }
+      })
+      console.log(plant.name + ' ' + plant.color + ' ' + plant.type);
+      // res.send(plant);
+      // return next(plant);
     });
 
-    plants.delete(('/:plant_id'), (req,res) => {
-          Plant.remove({
-            _id: req.params.plant_id
-          }, (err, plant) => {
-            if (err)
-              res.send(err);
-            res.json({message: 'Successfully deleted!'});
-          });
-      });
+  })
 
 
 module.exports = plants;
