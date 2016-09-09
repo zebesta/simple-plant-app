@@ -4,6 +4,7 @@ const plants = require('express').Router();
 var mongoose   = require('mongoose');
 // mongoose.connect('mongodb://plants:plants@ds029106.mlab.com:29106/plantsdb');
 
+//******** USING ACTUAL MONGO DB ONLINE!
 var uri = 'mongodb://plants:plants@ds029106.mlab.com:29106/plantsdb'
 mongoose.connect(uri, function (error) {
     if (error) console.error(error);
