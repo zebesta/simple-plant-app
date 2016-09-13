@@ -37,13 +37,13 @@ var port = process.env.PORT || 8080;        //set port
 
 // more routes for our API will happen here
 //HTML to allow users to add plant to the database
-app.get('/index.html', function(req, res) {
-    res.sendfile('index.html', {root: __dirname })
-});
-//HTML to show current database values to users
-app.get('/show.html', function(req, res) {
-    res.sendfile('show.html', {root: __dirname })
-});
+// app.get('/index.html', function(req, res) {
+//     res.sendfile('index.html', {root: __dirname })
+// });
+// //HTML to show current database values to users
+// app.get('/show.html', function(req, res) {
+//     res.sendfile('show.html', {root: __dirname })
+// });
 //default to show.html
 app.get('/', function(req, res) {
     // res.sendfile('show.html', {root: __dirname })
