@@ -4,7 +4,7 @@ var cors = require('cors')
 
 var fs = require('fs');
 const app        = express();                 // define our app using express
-const routes = require('./routes')
+// const routes = require('./routes')
 var bodyParser = require('body-parser');
 
 //Database and local hosting for it
@@ -51,7 +51,7 @@ app.get('/', function(req, res) {
 });
 
 
-app.use('/api', routes);
+// app.use('/api', routes);
 
 //Start the server
 app.listen(port);
