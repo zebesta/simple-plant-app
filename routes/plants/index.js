@@ -3,7 +3,7 @@ const plants = require('express').Router();
 //database related variables
 var mongoose   = require('mongoose');
 var cors = require('cors');
-mongoose.connect('mongodb://plants:plants@ds029106.mlab.com:29106/plantsdb');
+mongoose.connect('mongodb://localhost/simple-plant-app/data');
 //locally degined schema for mongoose
 var Plant     = require('../../app/models/plant');
 var types = require('./types');
@@ -33,6 +33,7 @@ plants.get('/', (req, res) => {
     plant.name = req.body.name || 'n/a';  // set the plants name (comes from the request)
     plant.color = req.body.color || 'n/a';
     plant.type = req.body.type || 'n/a';
+    plant.imageurl = req.body.imageurl || 'http://s3.evcdn.com/images/block/I0-001/031/862/186-2.jpeg_/free-garden-talk-fall-vegetable-gardening-86.jpeg'
     console.log('Plant being posted and the plants name is: '+plant.name + ' and the color is: '+plant.color + ' type: '+plant.type);
     // save the plant and check for errors
     plant.save((err, plant) => {
@@ -101,6 +102,7 @@ plants.delete('/:plant_id', cors(), (req,res) => {
       plant.name = req.body.plant.name;
       plant.color = req.body.plant.color;
       plant.type = req.body.plant.type;
+      plant.imageurl = req.body.plant.imageurl;
       plant.save(function(err){
         if(err){
           console.log("error in the plant.save function!");

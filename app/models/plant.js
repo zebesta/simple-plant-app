@@ -6,6 +6,7 @@ var Schema       = mongoose.Schema;
 var PlantSchema   = new Schema({
     name: String,
     color: String,
+    imageurl: String,
     type: String
 });
 
