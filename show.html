@@ -41,14 +41,14 @@ table tr:nth-child(even) {
 
 <br>
 
-<a href="http://localhost:8080/api/plants/types/herb">Herbs!</a>
-<a href="http://localhost:8080/api/plants/types/vegetable">Vegetables!</a>
-<a href="http://localhost:8080/api/plants/types/fruit">Fruits!</a>
-<a href="http://localhost:8080/api/plants/types/flower">Flowers!</a>
+<a href="http://nameless-cliffs-62966.herokuapp.com/api/plants/types/herb">Herbs!</a>
+<a href="http://nameless-cliffs-62966.herokuapp.com/api/plants/types/vegetable">Vegetables!</a>
+<a href="http://nameless-cliffs-62966.herokuapp.com/api/plants/types/fruit">Fruits!</a>
+<a href="http://nameless-cliffs-62966.herokuapp.com/api/plants/types/flower">Flowers!</a>
 
 <br>
 <h3>Add addtional plants: </h3>
-<form id="myForm" action="http://localhost:8080/api/plants" method="POST">
+<form id="myForm" action="http://nameless-cliffs-62966.herokuapp.com/api/plants" method="POST">
   Name: <input type="text" name="name"><br>
   Color: <input type="text" name="color"><br>
   Type: <select name="type">
@@ -65,7 +65,7 @@ table tr:nth-child(even) {
 <script>
 console.log('executing show.html script!');
 var xmlhttp = new XMLHttpRequest();
-var url = "http://localhost:8080/api/plants";
+var url = "http://nameless-cliffs-62966.herokuapp.com/api/plants";
 
 xmlhttp.onreadystatechange=function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -111,7 +111,7 @@ function myFunction(response) {
     document.getElementById("id01").innerHTML = out;
 }
 function updateScriptToShow(type){
-  url = "http://localhost:8080/api/plants"+type;
+  url = "http://nameless-cliffs-62966.herokuapp.com/api/plants"+type;
   xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange=function() {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
