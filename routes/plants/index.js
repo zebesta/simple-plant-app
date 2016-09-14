@@ -20,7 +20,7 @@ plants.get('/', (req, res) => {
       //if name query is being send
       if(req.query['name']){
         console.log('Plane request was sent with the name query!!: ' + req.query['name']);
-        Plant.find({name: req.query['name']}, (err,plants)=>{
+        Plant.find({name: { "$regex": req.query['name'],  "$options": "i"}}, (err,plants)=>{
           if(err){
             res.send(err);
           }
