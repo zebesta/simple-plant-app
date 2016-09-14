@@ -17,12 +17,23 @@ plants.use('/types', types);
 // Routed from /api/plants
 plants.get('/', (req, res) => {
       console.log('Plant request sent to get all the plants!');
-      Plant.find((err, plants) => {
-        if (err) {
-          res.send(err);
-         }
-         res.json(plants);
-       });
+      //if name query is being send
+      if(req.query['name']){
+        console.log('Plane request was sent with the name query!!: ' + req.query['name']);
+        Plant.find({name: req.query['name']}, (err,plants)=>{
+          if(err){
+            res.send(err);
+          }
+          res.json(plants);
+        });
+      }else{
+        Plant.find((err, plants) => {
+          if (err) {
+            res.send(err);
+           }
+           res.json(plants);
+         });
+      }
 
      })
      .post('/', (req, res) => {
@@ -33,7 +44,7 @@ plants.get('/', (req, res) => {
     plant.name = req.body.name || 'n/a';  // set the plants name (comes from the request)
     plant.color = req.body.color || 'n/a';
     plant.type = req.body.type || 'n/a';
-    plant.imageurl = req.body.imageurl || 'http://s3.evcdn.com/images/block/I0-001/031/862/186-2.jpeg_/free-garden-talk-fall-vegetable-gardening-86.jpeg'
+    plant.imageurl = req.body.imageurl || 'http://s3.evcdn.com/images/block/I0-001/031/862/186-2.jpeg_/free-garden-talk-fall-vegetable-gardening-86.jpeg';
     console.log('Plant being posted and the plants name is: '+plant.name + ' and the color is: '+plant.color + ' type: '+plant.type);
     // save the plant and check for errors
     plant.save((err, plant) => {
@@ -50,7 +61,7 @@ plants.get('/', (req, res) => {
 
 //If id is sent:
 plants.param('plant_id', (req, res, next, value) => {
-  console.log("plants param is being called!")
+  console.log("plants param is being called!");
   req.plant_id = value;
   next();
 });
