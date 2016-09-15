@@ -27,7 +27,7 @@ plants.get('/', (req, res) => {
           res.json(plants);
         });
       }else{
-        Plant.find((err, plants) => {
+        Plant.find({}, null, {sort: 'name'},(err, plants) => {
           if (err) {
             res.send(err);
            }
