@@ -8,7 +8,7 @@ types.get('/', (req, res) => {
 //get subset of plants based on type: vegetable, fruit, flower, herb
 types.get('/:type_id', (req,res)=>{
   console.log('Plant request sent to get just a specific type of plants: ' +req.params.type_id);
-  Plant.find({type: String(req.params.type_id)}, (err,plants)=>{
+  Plant.find({type: String(req.params.type_id)}, null, {sort: 'name'}, (err,plants)=>{
     if(err){res.send(err);}
     res.json(plants);
   });
