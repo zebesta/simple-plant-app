@@ -3,7 +3,10 @@ const plants = require('express').Router();
 //database related variables
 var mongoose   = require('mongoose');
 var cors = require('cors');
-mongoose.connect('mongodb://localhost/simple-plant-app/data');
+//web
+mongoose.connect('plants:plants@ds029106.mlab.com:29106/plantsdb');
+//offline
+// mongoose.connect('mongodb://localhost/simple-plant-app/data');
 //locally degined schema for mongoose
 var Plant     = require('../../app/models/plant');
 var types = require('./types');
